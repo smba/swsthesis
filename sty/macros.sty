@@ -1,0 +1,206 @@
+\RequirePackage{tabularx}
+\RequirePackage{fontawesome}
+
+
+
+% Define thick line for tables, used in \RQ{} macro below
+\usepackage{array}
+\newcolumntype{?}{!{\color{sws1-lighter!26}\vrule width 1.5pt}}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+\RequirePackage{framed}
+\setlength\FrameSep{0.5em}
+\setlength\OuterFrameSep{\partopsep}
+
+
+\RequirePackage{mdframed}
+%box
+\usepackage[noframe]{showframe}
+\usepackage{framed}
+
+% coole box
+\renewenvironment{shaded}[1][gray]{%
+	\vspace{-3mm}\noindent
+	\definecolor{shadecolor}{named}{#1}%
+	\def\FrameCommand{\fboxsep=\FrameSep\colorbox{shadecolor}}%
+	\MakeFramed{\advance\hsize-\width\noindent\FrameRestore\FrameRestore}}%
+{\endMakeFramed}
+
+% Define a custom marginpar command with font size and style options
+\newcommand{\sidepar}[1]{%
+	\marginnote[]{%
+		\centering
+		\small\relscale{0.9} % Change the font size here (you can use other size commands like \tiny, \footnotesize, etc.)
+		\setstretch{0.9}
+		\textit{\sffamily #1} % Change the font style here (\textbf for bold, \textit for italics)
+	}%
+}
+
+\RequirePackage{totcount}
+\regtotcounter{chapter}
+
+% cite all authors 
+\newcommand{\printpublication}[1]{\AtNextCite{\defcounter{maxnames}{99}}\fullcite{#1}}
+
+\newmdenv[
+leftmargin=\parindent,
+rightmargin=\parindent,
+innerleftmargin=15pt,
+innerrightmargin=20pt,
+innertopmargin=10pt,
+innerbottommargin=10pt,
+linewidth=1.5pt, % Border width
+linecolor=sws1!15, % Border color
+backgroundcolor=sws1-lighter!3!white,
+topline=false,
+bottomline=true,
+leftline=false,
+rightline=true, % Set to true if a right border is desired
+skipabove=\baselineskip,
+skipbelow=\baselineskip,
+]{summaryblock}
+
+\newmdenv[
+leftmargin=\parindent,
+rightmargin=\parindent,
+innerleftmargin=15pt,
+innerrightmargin=20pt,
+innertopmargin=10pt,
+innerbottommargin=10pt,
+linewidth=1.5pt, % Border width
+linecolor=sws2!25, % Border color
+backgroundcolor=sws2-lighter!5!white,
+topline=false,
+bottomline=true,
+leftline=false,
+rightline=true, % Set to true if a right border is desired
+skipabove=\baselineskip,
+skipbelow=\baselineskip,
+]{insightblock}
+
+\newmdenv[
+leftmargin=\parindent,
+rightmargin=\parindent,
+innerleftmargin=15pt,
+innerrightmargin=20pt,
+innertopmargin=7pt,
+innerbottommargin=7pt,
+linewidth=2pt, % Border width
+linecolor=sws1-lighter!20, % Border color
+backgroundcolor=sws1-lighter!3!white,
+topline=false,
+bottomline=false,
+leftline=true,
+rightline=false, % Set to true if a right border is desired
+skipabove=\baselineskip,
+skipbelow=\baselineskip,
+]{quoto}
+
+% summary{content, RQ}
+\newcommand{\summary}[1]{
+	\begin{summaryblock}\small
+		\textsf{\color{sws1-darkest}Summary}\color{sws1-darker}
+		\vspace{0.25em}
+		
+		\noindent#1
+	\end{summaryblock}
+}
+
+\newcommand{\RQsummary}[2]{
+	\begin{summaryblock}\small
+		\textsf{\color{sws1-darkest}Summary}~(#1)\color{sws1-darker}
+		\vspace{0.25em}
+		
+		\noindent#2
+	\end{summaryblock}
+}
+
+\newcommand{\insight}[1]{
+	\begin{insightblock}\small
+		{\color{sws2-darkest}\textsf{Insight} \faLightbulbO}
+		\color{sws2-darkest!90}
+		
+		\vspace{0.25em}
+		\noindent#1
+	\end{insightblock}
+}
+
+\newcommand{\quoteblock}[2]{
+	\begin{quoto}
+		#1 
+		
+		\begin{flushright}
+			\noindent#2
+		\end{flushright}
+	\end{quoto}
+}
+
+\newcommand{\chapterbox}[1]{
+	{\footnotesize
+		\begin{center}
+			\parbox{0.8\textwidth}{\setstretch{0.975}
+				\color{sws1-darkest!10!black}
+				This chapter shares material with and is composed from the following paper:
+				\vspace{0.5em}
+				
+				\noindent\printpublication{#1}%\hfill\autocite{#1}
+			}
+			~\\
+			~\\
+			\noindent\textcolor{sws1!20}{\rule{0.7\linewidth}{1pt}}
+		\end{center}
+	}
+}
+
+\RequirePackage{epigraph}
+\renewcommand{\epigraph}[2]{
+	\begin{flushright}
+		{\small\color{sws1-darkest}\guillemetleft{#1}\guillemetright}\\
+		
+		
+		{\footnotesize\color{sws1-darker}#2}\\
+		
+	\end{flushright}
+}
+
+% RQ-BOX
+\newcommand{\RQ}[2]{
+	%\vspace{0.1em}
+	\noindent\hypertarget{rq:#1}{
+		\bgroup
+		\def\arraystretch{1.3}%  1 is the default, change whatever you need
+		\begin{tabularx}{\linewidth}{p{0.08\linewidth}?p{0.85\linewidth}}
+			$\text{RQ}_\text{#1}$ & #2 \\
+		\end{tabularx}
+		\egroup
+	}
+	%\vspace{0.1em}
+}
+
+% RQ-REF
+\newcommand{\RQref}[1]{\hyperlink{rq:#1}{$\text{RQ}_\text{#1}$}}
+
+\usepackage{xstring} % Needed for string manipulation
+\newcommand{\colorfirstletter}[2]{%
+	\textcolor{#1}{\StrLeft{#2}{1}}\StrGobbleLeft{#2}{1}%
+}
+\newenvironment{abstract}[1] % #1 is the title
+{
+	\clearpage
+	\section*{\colorfirstletter{sws1}{#1}}
+	\par
+	
+}
+{% End code
+	\par % Adds some space after the environment
+}
+
+\newenvironment{acknowledgements} % #1 is the title
+{
+	\clearpage
+	\section*{\textcolor{sws3-darker}{A}cknowledgements}
+	\par
+}
+{% End code
+	\par % Adds some space after the environment
+}

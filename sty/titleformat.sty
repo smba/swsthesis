@@ -1,0 +1,46 @@
+\RequirePackage[explicit]{titlesec}
+
+% Formatting for part
+\titleformat{\part}
+[block]{\Huge\sffamily}
+{Part \thepart}
+{11pt}
+{\\ \\ {\color{sws1-darker}#1}}
+
+% Formatting for chapter
+\titleformat{\chapter}
+[display]
+{\large\sffamily} % Format settings for the title
+{Chapter \thechapter} % Label for "Chapter X"
+{1pt} % Space between the label and title body
+{\Huge\sffamily#1} % Title content
+% Optional line after the title, uncomment to enable
+%[\vspace{2pt}\titlerule]
+
+% Formatting for section
+\titleformat{\section}
+[block]{\Large\sffamily}
+{\thesection}
+{11pt}
+{#1}
+
+% Formatting for subsection
+\titleformat{\subsection}
+[block]{\large\sffamily}
+{\thesubsection}
+{11pt}
+{#1}
+
+% Formatting for subsection
+\titleformat{\subsubsection}
+[block]{\sffamily\bfseries}
+{\thesubsubsection}
+{11pt}
+{#1}
+
+% Formatting for paragraph
+\titleformat{\paragraph}
+[runin]{\itshape}
+{\theparagraph}
+{12pt}
+{#1}

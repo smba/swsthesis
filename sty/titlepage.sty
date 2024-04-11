@@ -1,0 +1,103 @@
+\RequirePackage{xcolor}
+
+% Define custom author and title commands with optional arguments
+\newcommand{\degree}[1]{\newcommand{\@xdegree}{#1}}
+\newcommand{\bornat}[1]{\newcommand{\@bornat}{#1}}
+\newcommand{\bornin}[1]{\newcommand{\@bornin}{#1}}
+\newcommand{\matrikel}[1]{\newcommand{\@matrikel}{#1}}
+
+\newcommand{\MONTH}{%
+	\ifcase\the\month
+	\or Januar% 1
+	\or Februar% 2
+	\or März% 3
+	\or April% 4
+	\or Mai% 5
+	\or Juni% 6
+	\or Juli% 7
+	\or August% 8
+	\or September% 9
+	\or Oktober% 10
+	\or November% 11
+	\or Dezember% 12
+	\fi}
+
+\makeatletter % Renew \maketitle commans
+\renewcommand{\maketitle}{
+	\begin{titlepage}
+
+		\noindent\includegraphics[width=0.48\textwidth]{sty/resources/logo}	\\
+		
+		\vspace{2cm}
+		
+		\noindent\begin{minipage}{13cm}
+			\begin{flushleft}
+				\huge\sffamily\noindent\@title
+			\end{flushleft}
+		\end{minipage}
+		\vspace{4cm}
+		
+		\noindent Der Fakultät für Mathematik und Informatik\\
+		der Universität Leipzig\\
+		eingereichte
+		
+		\vspace{1.0cm}
+		
+		\noindent \textsc{Dissertation}
+		\vspace{1.0cm}
+		
+		\noindent zur Erlangung des akademischen Grades\\
+		%\vspace{1em}
+		\noindent Doktor der Naturwissenschaften (Dr. rer. nat.)\\
+		%\vspace{1em}
+		\noindent im Fachgebiet Informatik
+		
+		\vspace{1.7cm}
+		\noindent vorgelegt
+		
+		\vspace{0.5cm}
+		\noindent \hspace{-0.5em}\begin{tabular}{p{2.75cm}l}
+			von &  {\@author\par} {\@xdegree\par} \\
+			geboren am & {\@bornat\par} in {\@bornin\par} \\
+			%& \\
+			%Matrikelnummer.: & {\@matrikel\par} 
+		\end{tabular}
+		
+		\vspace{0.9cm}
+		\vfill
+		
+		%\clearpage
+		
+		%\noindent\@xauthor: \textit{\@xtitle}
+	
+	\end{titlepage}
+	%
+	\clearpage
+	\vspace*{\fill}
+	\noindent\textbf{\@author}: \textit{\@title},\\
+	\noindent Universität Leipzig \raisebox{0.35ex}{$\centerdot$} {\MONTH~\the\year{}}
+	\clearpage
+	
+	\subsection*{Selbstständigkeitserklärung}
+	Hiermit erkläre ich, die vorliegende Dissertation selbständig und ohne unzulässige
+	fremde Hilfe angefertigt zu haben. Ich habe keine anderen als die angeführten Quellen und Hilfsmittel benutzt und sämtliche Textstellen, die wörtlich oder sinngemäß
+	aus veröffentlichten oder unveröffentlichten Schriften entnommen wurden, und alle
+	Angaben, die auf mündlichen Auskünften beruhen, als solche kenntlich gemacht.
+	Ebenfalls sind alle von anderen Personen bereitgestellten Materialen oder erbrachten
+	Dienstleistungen als solche gekennzeichnet.
+	
+	\vspace{17mm}
+	\begin{tabular}{@{}p{2.5in}p{2in}p{2in}@{}}
+		
+		\hrulefill && \\
+		\footnotesize Ort und Datum &&\\
+		&& \\
+		&& \\
+		&& \\
+		\hrulefill && \\
+		\footnotesize Unterschrift && \\
+		
+	\end{tabular}
+	\clearpage
+}
+\makeatother

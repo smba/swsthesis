@@ -1,0 +1,22 @@
+\RequirePackage{lastpage}
+\RequirePackage{fancyhdr}
+
+% redefine marks
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\pagestyle{fancy}
+\fancyhead{} % clear all header fields
+\renewcommand{\headrulewidth}{0.5pt}
+%\fancyhead[LO,RE]{}
+\fancyhead[L]{\sffamily\rightmark}
+\fancyhead[R]{\sffamily\thepage}
+
+\fancyfoot{} % clear all footer fields
+\fancyfoot[R]{}
+
+\fancypagestyle{chapterpage}{ % Page style for chapter starting pages
+	\fancyhf{} % Clear header and footer
+	\fancyfoot[R]{} % Page number on the right
+	\fancyhead{}
+	% Add other settings as needed
+}

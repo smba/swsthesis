@@ -1,0 +1,87 @@
+\documentclass{swsthesis}
+
+\title{On Imaginary Cities}
+\author{Donald Duck}
+\degree{BSc}
+\matrikel{12356}
+\bornat{30.02.1993}
+\bornin{Bielefeld}
+
+% load bibtex resources
+\addbibresource{literature.bib}
+
+\begin{document}
+	\frontmatter
+	\maketitle
+	\tableofcontents
+	\clearpage
+	
+	\begin{abstract}{Abstract}
+		\blindtext
+	\end{abstract}
+	
+	\begin{abstract}{Zusammenfassung}
+		\blindtext
+	\end{abstract}
+	
+	\begin{acknowledgements}
+		\blindtext
+	\end{acknowledgements}
+	
+	\clearpage
+	\addcontentsline{toc}{chapter}{\listfigurename}
+	\listoffigures
+	\clearpage
+	
+	\addcontentsline{toc}{chapter}{\listtablename}
+	\listoftables
+	\clearpage
+		
+	\mainmatter
+	\chapter{Options}
+	
+	\section{Color Palette}
+
+	\begin{center}
+		\begin{tabular}{lcccc}
+			& \texttt{sws1} & \texttt{sws2} & \texttt{sws3} & \texttt{sws4}\\
+			\midrule
+			\texttt{lightest}& \cellcolor{sws1-lightest} &\cellcolor{sws2-lightest}&\cellcolor{sws3-lightest}&\cellcolor{sws4-lightest} \\
+			
+			\texttt{lighter}& \cellcolor{sws1-lighter} &\cellcolor{sws2-lighter}&\cellcolor{sws3-lighter}&\cellcolor{sws4-lighter} \\
+			
+			%\midrule
+			\texttt{(base)}& \cellcolor{sws1} &\cellcolor{sws2}&\cellcolor{sws3}&\cellcolor{sws4} \\
+			%\midrule
+			\texttt{darker}& \cellcolor{sws1-darker} &\cellcolor{sws2-darker}&\cellcolor{sws3-darker}&\cellcolor{sws4-darker} \\
+			
+			\texttt{darkest}& \cellcolor{sws1-darkest} &\cellcolor{sws2-darkest}&\cellcolor{sws3-darkest}&\cellcolor{sws4-darkest} \\	
+			\midrule
+			\texttt{pastel}& \cellcolor{sws1-lightest!25} &\cellcolor{sws2-lightest!25}&\cellcolor{sws3-lightest!25}&\cellcolor{sws4-lightest!25} \\
+			\texttt{highlight}& \cellcolor{sws1-lightest!15} &\cellcolor{sws2-lightest!15} &\cellcolor{sws3-lightest!15}& \cellcolor{sws4-lightest!15}\\
+			\texttt{highlight}& \cellcolor{sws1-lightest!5} &\cellcolor{sws2-lightest!5} &\cellcolor{sws3-lightest!5}& \cellcolor{sws4-lightest!5}\\
+			\midrule	
+		\end{tabular}
+	\end{center}
+	
+	\section{Color Themes}
+	\section{Print, Review, Screen}
+	
+	\chapter{Macros}
+	\chapterbox{steiner_adaptive_2019}
+	\RQ{1}{Nice?}
+	
+	
+	\section{Fancy Boxes}
+	\summary{Benmer}
+	\RQsummary{\RQref{1}}{Benmer}
+	\insight{Benmer}
+	
+	\quoteblock{Don't ever quote me on that!}{\autocite{steiner_adaptive_2019}}
+	
+	
+	\backmatter
+	\AtNextBibliography{}
+	\printbibliography[heading=bibintoc]
+	
+\end{document}

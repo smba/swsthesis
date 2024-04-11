@@ -1,0 +1,14 @@
+% format itemize and enumerate environments
+
+\RequirePackage{paralist}
+\RequirePackage{enumerate}
+
+\def\labelitemi{
+	{\footnotesize\raisebox{0.3ex}
+		{
+			\footnotesize$\triangleright$
+		}
+	}
+}
+
+\renewcommand\labelenumi{\theenumi)}
